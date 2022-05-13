@@ -1,6 +1,7 @@
 const webpack = require('web-scripts/node_modules/webpack')
+const ForkTsCheckerWebpackPlugin = require('web-scripts/node_modules/fork-ts-checker-webpack-plugin')
 const HtmlWebpackPlugin = require('web-scripts/node_modules/html-webpack-plugin')
-const { babelLoader, resolveFrom, buildOut } = require('web-scripts/src/buildUtil')
+const { babelLoader, resolveFrom, buildOut, useTsc } = require('web-scripts/src/buildUtil')
 
 /**
  * @type {import('webpack').Configuration}
@@ -30,6 +31,14 @@ module.exports = {
   devtool: false,
   performance: false,
   cache: false,
+  devServer: {
+    client: {
+      overlay: {
+        errors: false,
+        warnings: false,
+      },
+    },
+  },
   module: {
     rules: [
       babelLoader({
@@ -40,5 +49,12 @@ module.exports = {
       }),
     ],
   },
-  plugins: [new webpack.ProgressPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new webpack.ProgressPlugin(),
+    useTsc &&
+      new ForkTsCheckerWebpackPlugin({
+        logger: 'webpack-infrastructure',
+      }),
+    new HtmlWebpackPlugin(),
+  ].filter(Boolean),
 }

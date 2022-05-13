@@ -11,6 +11,13 @@ const resolveFrom = (...p) => path.resolve(rootDir, ...p)
 
 const buildOut = resolveFrom('dist')
 
+const { USE_TSC, USE_LINT, FAST_REFRESH, FORCE_BUILD } = process.env
+
+const shouldUseReactRefresh = FAST_REFRESH === '1'
+const forceBuild = FORCE_BUILD === '1'
+const useTsc = forceBuild ? false : USE_TSC === undefined || USE_TSC === '1'
+const useLint = forceBuild ? false : USE_LINT === undefined || USE_LINT === '1'
+
 const babelConfig = ({ targets, debug = false }) => {
   const isNodeTarget = !!(targets && targets.node)
 
@@ -71,4 +78,7 @@ module.exports = {
   pkg,
   buildOut,
   resolveFrom,
+  shouldUseReactRefresh,
+  useTsc,
+  useLint,
 }

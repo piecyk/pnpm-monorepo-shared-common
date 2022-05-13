@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "tsc": "tsc",
     "webpack": "node ./node_modules/web-scripts/node_modules/webpack/bin/webpack.js",
     "start": "npm run webpack serve -- --config ./webpack.config.js"
   },

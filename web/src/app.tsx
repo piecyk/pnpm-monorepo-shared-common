@@ -1,6 +1,6 @@
+import * as React from 'react'
 import { Title } from 'common/Title/Title'
 import { render } from 'react-dom'
-import * as React from 'react'
 
 const App = () => {
   return (
