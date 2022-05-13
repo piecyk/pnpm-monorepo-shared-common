@@ -1,0 +1,26 @@
+{
+  "name": "web-foo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "webpack": "node ./node_modules/web-scripts/node_modules/webpack/bin/webpack.js",
+    "start": "npm run webpack serve -- --config ./webpack.config.js"
+  },
+  "devDependencies": {
+    "typescript": "4.6.2",
+    "web-scripts": "workspace:*"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.9",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "web-common": "workspace:*"
+  },
+  "dependenciesMeta": {
+    "web-common": {
+      "injected": true
+    }
+  }
+}

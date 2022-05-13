@@ -1,0 +1,12 @@
+{
+  "name": "monorepo-root",
+  "private": true,
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7.1.0"
+  },
+  "packageManager": "pnpm@7.1.0",
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
+}

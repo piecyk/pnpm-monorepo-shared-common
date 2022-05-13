@@ -1,0 +1,5 @@
+packages:
+  - web-scripts
+  - web-common
+  - web
+  - web-foo
